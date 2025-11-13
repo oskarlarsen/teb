@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-teb-green: #006c34;
+  --color-teb-orange: #ff5100;
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(23, 14, 84);
+  color: rgba(255, 255, 255, 0.87);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100;
+}
