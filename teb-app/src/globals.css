@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
 
 @theme {
   --color-teb-green: #006c34;
