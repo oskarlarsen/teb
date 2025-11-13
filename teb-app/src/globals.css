@@ -2,7 +2,29 @@
 
 @theme {
   --color-teb-green: #006c34;
+  --color-teb-green-light: #00a34f;
+  --color-teb-green-dark: #004d25;
+
   --color-teb-orange: #ff5100;
+  --color-teb-orange-light: #ff7733;
+  --color-teb-orange-dark: #cc4100;
+
+  --color-navy: #1a1654;
+  --color-navy-light: #2d2577;
+  --color-navy-dark: #0f0e3a;
+
+  /* Accents */
+  --color-gold: #ffd700;
+  --color-white: #ffffff;
+  --color-gray-light: #e5e5e5;
+  --color-gray: #808080;
+  --color-gray-dark: #333333;
+
+  /* Semantic Colors */
+  --color-success: #00a34f;
+  --color-warning: #ff7733;
+  --color-error: #cc4100;
+  --color-info: #2d2577;
 }
 
 :root {
@@ -18,7 +40,7 @@
 }
 
 body {
-  background-color: rgb(23, 14, 84);
+  background-color: var(--color-navy);
   color: rgba(255, 255, 255, 0.87);
   min-height: 100vh;
 }
