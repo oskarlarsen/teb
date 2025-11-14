@@ -2,6 +2,9 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Letter3DSwap from './components/fancy/text/letter-3d-swap'
 import TextRotate from './components/fancy/text/text-rotate'
+import VariableFontHoverByRandomLetter from './components/fancy/text/variable-font-hover-by-random-letter'
+import MediaBetweenText from './components/fancy/blocks/media-between-text'
+import myImage from './assets/images/Jarritos-PNG-Pic.png'
 import './App.css'
 
 function App() {
@@ -11,17 +14,37 @@ function App() {
       <Header />
       <main className="flex-1 flex items-center justify-center p-8">
         <div className="text-center max-w-4xl mx-auto">
-          <Letter3DSwap
-            as="h1"
-            mainClassName="text-6xl font-bold text-white mb-4"
-            frontFaceClassName="text-teb-green"
-            secondFaceClassName="text-teb-green"
-            staggerDuration={0.08}
-            staggerFrom="first"
-            rotateDirection="bottom"
-          >
-            TEBONSMA
-          </Letter3DSwap>
+          <VariableFontHoverByRandomLetter
+            label="TEBONSMA"
+            className="text-6xl font-bold text-teb-green mb-4 block"
+            fromFontVariationSettings="'wght' 400"
+            toFontVariationSettings="'wght' 900"
+            staggerDuration={0.05}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 20,
+            }}
+          />
+
+          <MediaBetweenText
+            firstText="that's a nice"
+            secondText=" jarritos"
+            mediaUrl={myImage}
+            mediaType="image"
+            alt="jarritos"
+            triggerType="hover"
+            className="text-4xl font-bold text-white my-8 justify-center items-center"
+            animationVariants={{
+              initial: { width: '1%', opacity: 0},
+              animate: { width: '5%', opacity: 1 },
+            }}
+            leftTextClassName="text-white mr-2"
+            rightTextClassName="text-teb-orange"
+            mediaContainerClassName="mx-2 h-20 overflow-hidden rounded-lg"
+            mediaLink="https://www.jarritos.com/"
+            mediaLinkTarget="_blank"
+          />
           
           <Letter3DSwap
             as="p"
