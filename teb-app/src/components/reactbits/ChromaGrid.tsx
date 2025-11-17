@@ -27,8 +27,8 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
   items,
   className = '',
   radius = 300,
-  damping = 0.45,
-  fadeOut = 0.6,
+  damping = 0.35,
+  fadeOut = 1,
   ease = 'power3.out'
 }) => {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -66,57 +66,57 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       url: ''
     },
     {
-      image: '/images/Garbae.jpg',
-      title: 'NAVN NAVN',
+      image: '/images/Smid.jpg',
+      title: 'Fredrik "Magne" Bjørge',
       subtitle: 'Mann med hatt',
-      handle: '@caseypark',
+      handle: '@fredrikschmidbjorge',
       borderColor: '#EF4444',
       gradient: 'linear-gradient(195deg,#EF4444,#000)',
       url: ''
     },
     {
-      image: '/images/Garbae.jpg',
-      title: 'NAVN NAVN',
+      image: '/images/Pete.jpg',
+      title: 'Petter "Abraham" Lona',
       subtitle: 'Promillepoliti',
-      handle: '@thesamkim',
+      handle: '@petterlona',
       borderColor: '#8B5CF6',
       gradient: 'linear-gradient(225deg,#8B5CF6,#000)',
       url: ''
     },
     {
-      image: '/images/Garbae.jpg',
-      title: 'NAVN NAVN',
+      image: '/images/Bingo.jpg',
+      title: 'Eivind "Kris" Sundet',
       subtitle: 'Meksikaner',
-      handle: '@tylerrod',
+      handle: '@eivind.f.sundet',
       borderColor: '#06B6D4',
       gradient: 'linear-gradient(135deg,#06B6D4,#000)',
       url: ''
     },
     {
-      image: '/images/Garbae.jpg',
-      title: 'NAVN NAVN',
+      image: '/images/Remi.jpg',
+      title: 'Claus "Remi" Brøttem',
       subtitle: 'Blitzkrieger',
-      handle: '@caseypark',
-      borderColor: '#EF4444',
-      gradient: 'linear-gradient(195deg,#EF4444,#000)',
+      handle: '@clausloge',
+      borderColor: '#EC4899',
+      gradient: 'linear-gradient(195deg,#EC4899,#000)',
       url: ''
     },
     {
       image: '/images/Slangen.jpg',
       title: 'August "Knut" Rø',
-      subtitle: 'Ingen tittel',
+      subtitle: 'Enøyd pirat',
       handle: '@august.dyrendal',
-      borderColor: '#8B5CF6',
-      gradient: 'linear-gradient(225deg,#8B5CF6,#000)',
+      borderColor: '#F59E0B',
+      gradient: 'linear-gradient(225deg,#F59E0B,#000)',
       url: ''
     },
     {
       image: '/images/Adam.jpg',
       title: 'Theo "Adam" Holgersen',
-      subtitle: 'Ingen tittel',
+      subtitle: 'Narkomann',
       handle: '@theoholgersen',
-      borderColor: '#06B6D4',
-      gradient: 'linear-gradient(135deg,#06B6D4,#000)',
+      borderColor: '#14B8A6',
+      gradient: 'linear-gradient(135deg,#14B8A6,#000)',
       url: ''
     }
   ];
@@ -173,78 +173,63 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
     c.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
   };
 
-  return (
-    <div
-      ref={rootRef}
-      onPointerMove={handleMove}
-      onPointerLeave={handleLeave}
-      className={`relative w-full h-full flex flex-wrap justify-center items-start gap-3 ${className}`}
-      style={
-        {
-          '--r': `${radius}px`,
-          '--x': '50%',
-          '--y': '50%'
-        } as React.CSSProperties
-      }
-    >
-      {data.map((c, i) => (
-        <article
-          key={i}
-          onMouseMove={handleCardMove}
-          onClick={() => handleCardClick(c.url)}
-          className="group relative flex flex-col w-[300px] rounded-[20px] overflow-hidden border-2 border-transparent transition-colors duration-300 cursor-pointer"
-          style={
-            {
-              '--card-border': c.borderColor || 'transparent',
-              background: c.gradient,
-              '--spotlight-color': 'rgba(255,255,255,0.3)'
-            } as React.CSSProperties
-          }
-        >
-          <div
-            className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-20 opacity-0 group-hover:opacity-100"
-            style={{
-              background:
-                'radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 70%)'
-            }}
-          />
-          <div className="relative z-10 flex-1 p-[10px] box-border">
-            <img src={c.image} alt={c.title} loading="lazy" className="w-full h-full object-cover rounded-[10px]" />
-          </div>
-          <footer className="relative z-10 p-3 text-white font-sans grid grid-cols-[1fr_auto] gap-x-3 gap-y-1">
-            <h3 className="m-0 text-[1.05rem] font-semibold">{c.title}</h3>
-            {c.handle && <span className="text-[0.95rem] opacity-80 text-right">{c.handle}</span>}
-            <p className="m-0 text-[0.85rem] opacity-85">{c.subtitle}</p>
-            {c.location && <span className="text-[0.85rem] opacity-85 text-right">{c.location}</span>}
+return (
+  <div
+    ref={rootRef}
+    onPointerMove={handleMove}
+    onPointerLeave={handleLeave}
+    className={`relative w-full h-full flex flex-wrap justify-center items-start gap-3 ${className}`}
+    style={
+      {
+        '--r': `${radius}px`,
+        '--x': '50%',
+        '--y': '50%'
+      } as React.CSSProperties
+    }
+  >
+    {data.map((c, i) => (
+      <article
+        key={i}
+        onMouseMove={handleCardMove}
+        onClick={() => handleCardClick(c.url)}
+        className="group relative flex flex-col h-[400px] w-[300px] p-1 rounded-[20px] border-transparent transition-colors duration-300 cursor-pointer will-change-transform"
+        style={
+          {
+            '--card-border': c.borderColor || 'transparent',
+            background: c.gradient,
+            '--spotlight-color': 'rgba(255,255,255,0.1)'
+          } as React.CSSProperties
+        }
+      >
+        {/* Card-level grayscale overlays - only affect this card */}
+        <div
+          className="absolute inset-0 rounded-[20px] pointer-events-none z-10"
+          style={{
+            backdropFilter: 'grayscale(1) brightness(0.78)',
+            WebkitBackdropFilter: 'grayscale(1) brightness(0.78)',
+            maskImage: `radial-gradient(circle 300px at var(--mouse-x, 50%) var(--mouse-y, 50%), transparent 0%, transparent 15%, rgba(0,0,0,0.10) 30%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.50) 75%, rgba(0,0,0,0.68) 88%, white 100%)`,
+            WebkitMaskImage: `radial-gradient(circle 300px at var(--mouse-x, 50%) var(--mouse-y, 50%), transparent 0%, transparent 15%, rgba(0,0,0,0.10) 30%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.50) 75%, rgba(0,0,0,0.68) 88%, white 100%)`
+          }}
+        />
+        
+        <div
+          className="absolute rounded-[20px] inset-0 pointer-events-none transition-opacity duration-500 z-20 opacity-100 group-hover:opacity-100"
+          style={{
+            background:
+              'radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 70%)'
+          }}
+        />
+
+        <div className="relative z-10 p-3 box-border" style={{ height: '300px' }}>
+          <img src={c.image} alt={c.title} loading="lazy" className="w-full h-full object-cover rounded-[6px]" />
+        </div>
+        <footer className="relative z-10 p-1.5 text-white font-sans flex flex-col gap-0.5">
+            <h3 className="text-[1.05rem] font-semibold truncate">{c.title}</h3>
+            <p className="text-[0.85rem] opacity-85 truncate">{c.subtitle}</p>
+            {c.handle && <span className="text-[0.70rem] opacity-80 truncate">{c.handle}</span>}
           </footer>
         </article>
       ))}
-      <div
-        className="absolute inset-0 pointer-events-none z-30"
-        style={{
-          backdropFilter: 'grayscale(1) brightness(0.78)',
-          WebkitBackdropFilter: 'grayscale(1) brightness(0.78)',
-          background: 'rgba(0,0,0,0.001)',
-          maskImage:
-            'radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0%,transparent 15%,rgba(0,0,0,0.10) 30%,rgba(0,0,0,0.22)45%,rgba(0,0,0,0.35)60%,rgba(0,0,0,0.50)75%,rgba(0,0,0,0.68)88%,white 100%)',
-          WebkitMaskImage:
-            'radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0%,transparent 15%,rgba(0,0,0,0.10) 30%,rgba(0,0,0,0.22)45%,rgba(0,0,0,0.35)60%,rgba(0,0,0,0.50)75%,rgba(0,0,0,0.68)88%,white 100%)'
-        }}
-      />
-      <div
-        ref={fadeRef}
-        className="absolute inset-0 pointer-events-none transition-opacity duration-[250ms] z-40"
-        style={{
-          backdropFilter: 'grayscale(1) brightness(0.78)',
-          WebkitBackdropFilter: 'grayscale(1) brightness(0.78)',
-          background: 'rgba(0,0,0,0.001)',
-          maskImage:
-            'radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.90)30%,rgba(255,255,255,0.78)45%,rgba(255,255,255,0.65)60%,rgba(255,255,255,0.50)75%,rgba(255,255,255,0.32)88%,transparent 100%)',
-          WebkitMaskImage:
-            'radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.90)30%,rgba(255,255,255,0.78)45%,rgba(255,255,255,0.65)60%,rgba(255,255,255,0.50)75%,rgba(255,255,255,0.32)88%,transparent 100%)',
-          opacity: 1
-        }}
-      />
     </div>
   );
 };

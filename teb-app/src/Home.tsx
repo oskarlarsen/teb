@@ -5,18 +5,14 @@ import TextRotate from './components/fancy/text/text-rotate'
 import VariableFontHoverByRandomLetter from './components/fancy/text/variable-font-hover-by-random-letter'
 import MediaBetweenText from './components/fancy/blocks/media-between-text'
 import Aurora from './components/reactbits/Aurora'
+import DarkVeil from './components/reactbits/DarkVeil'
 
 const Home = () => {
   return (
     <div className="flex flex-col min-h-screen relative">
-      {/* Aurora Background */}
+      {/* Custom Background */}
       <div className="fixed inset-0 z-0">
-        <Aurora
-          colorStops={["#006c34", "#ff5100", "#1a1654"]}
-          blend={0.6}
-          amplitude={1.2}
-          speed={0.3}
-        />
+        <DarkVeil />
       </div>
 
       <Header />
@@ -36,7 +32,7 @@ const Home = () => {
           />
 
           <MediaBetweenText
-            firstText="that's a nice"
+            firstText="That's a nice"
             secondText=" jarritos"
             mediaUrl="/images/Jarritos-PNG-Pic.png"
             mediaType="image"
@@ -53,7 +49,7 @@ const Home = () => {
             mediaLink="https://www.jarritos.com/"
             mediaLinkTarget="_blank"
           />
-          
+          <div className="flex flex-col items-center">
           <Letter3DSwap
             as="p"
             mainClassName="text-2xl text-white/80 mt-8"
@@ -74,6 +70,7 @@ const Home = () => {
             rotationInterval={3000}
             staggerDuration={0.02}
           />
+          </div>
         </div>
       </main>
       <Footer />
