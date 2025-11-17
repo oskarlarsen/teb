@@ -13,7 +13,7 @@ const Header = () => {
                     items={[
                         { label: 'Hjem', href: '/' },
                         { label: 'Avis', href: '/avis' },
-                        { label: 'Kontakt', href: '/kontakt' },
+                        { label: 'Kontakt', href: '/contact' },
                         { label: 'Om oss', href: '/persons' }
                     ]}
                     activeHref={location.pathname}
