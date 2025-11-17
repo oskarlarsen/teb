@@ -45,7 +45,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       handle: '@eirik.engum',
       borderColor: '#4F46E5',
       gradient: 'linear-gradient(145deg,#4F46E5,#000)',
-      url: ''
+      url: 'https://www.instagram.com/eirik.engum/'
     },
     {
       image: '/images/Gøran.jpg',
@@ -54,7 +54,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       handle: '@larsen_oskar',
       borderColor: '#10B981',
       gradient: 'linear-gradient(210deg,#10B981,#000)',
-      url: ''
+      url: 'https://www.instagram.com/larsen_oskar/'
     },
     {
       image: '/images/Garbae.jpg',
@@ -63,7 +63,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       handle: '@andersmgar',
       borderColor: '#F59E0B',
       gradient: 'linear-gradient(165deg,#F59E0B,#000)',
-      url: ''
+      url: 'https://www.instagram.com/andersmgar/'
     },
     {
       image: '/images/Smid.jpg',
@@ -72,7 +72,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       handle: '@fredrikschmidbjorge',
       borderColor: '#EF4444',
       gradient: 'linear-gradient(195deg,#EF4444,#000)',
-      url: ''
+      url: 'https://www.instagram.com/fredrikschmidbjorge/'
     },
     {
       image: '/images/Pete.jpg',
@@ -81,7 +81,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       handle: '@petterlona',
       borderColor: '#8B5CF6',
       gradient: 'linear-gradient(225deg,#8B5CF6,#000)',
-      url: ''
+      url: 'https://www.instagram.com/petterlona/'
     },
     {
       image: '/images/Bingo.jpg',
@@ -90,7 +90,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       handle: '@eivind.f.sundet',
       borderColor: '#06B6D4',
       gradient: 'linear-gradient(135deg,#06B6D4,#000)',
-      url: ''
+      url: 'https://www.instagram.com/eivind.f.sundet/'
     },
     {
       image: '/images/Remi.jpg',
@@ -99,7 +99,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       handle: '@clausloge',
       borderColor: '#EC4899',
       gradient: 'linear-gradient(195deg,#EC4899,#000)',
-      url: ''
+      url: 'https://www.instagram.com/clausloge/'
     },
     {
       image: '/images/Slangen.jpg',
@@ -108,7 +108,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       handle: '@august.dyrendal',
       borderColor: '#F59E0B',
       gradient: 'linear-gradient(225deg,#F59E0B,#000)',
-      url: ''
+      url: 'https://www.instagram.com/august.dyrendal/'
     },
     {
       image: '/images/Adam.jpg',
@@ -117,7 +117,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       handle: '@theoholgersen',
       borderColor: '#14B8A6',
       gradient: 'linear-gradient(135deg,#14B8A6,#000)',
-      url: ''
+      url: 'https://www.instagram.com/theoholgersen/'
     }
   ];
 

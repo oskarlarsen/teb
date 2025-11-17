@@ -1,7 +1,7 @@
-import Header from './Header';
-import Footer from './Footer';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import ChromaGrid from './../components/reactbits/ChromaGrid';
-import DarkVeil from './reactbits/DarkVeil';
+import DarkVeil from '../components/reactbits/DarkVeil';
 
 const Persons =() => {
   return (
@@ -13,7 +13,6 @@ const Persons =() => {
       <main className='flex-1 flex items-center justify-center p-8 relative z-10'>
         <ChromaGrid />
       </main>
-      <Footer />
     </div>
   );
 };

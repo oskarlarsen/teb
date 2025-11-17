@@ -208,7 +208,7 @@ export const MediaBetweenText = forwardRef<
           <img
             src={mediaUrl}
             alt={alt || `${firstText} ${secondText}`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover animate-spin-slow"
           />
         )}
       </>

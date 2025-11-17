@@ -1,8 +1,17 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 @theme {
+  --animate-spin-slow: spin-slow 8s linear infinite;
   --color-teb-green: #006c34;
   --color-teb-green-light: #00a34f;
   --color-teb-green-dark: #004d25;
