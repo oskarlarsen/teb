@@ -1,10 +1,8 @@
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 import Letter3DSwap from '../components/fancy/text/letter-3d-swap'
 import TextRotate from '../components/fancy/text/text-rotate'
 import VariableFontHoverByRandomLetter from '../components/fancy/text/variable-font-hover-by-random-letter'
 import MediaBetweenText from '../components/fancy/blocks/media-between-text'
-import Aurora from '../components/reactbits/Aurora'
 import DarkVeil from '../components/reactbits/DarkVeil'
 
 const Home = () => {

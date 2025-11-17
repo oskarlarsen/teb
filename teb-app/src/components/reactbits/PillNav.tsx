@@ -37,7 +37,6 @@ const PillNav: React.FC<PillNavProps> = ({
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isNavVisible, setIsNavVisible] = useState(false);
   const circleRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const tlRefs = useRef<Array<gsap.core.Timeline | null>>([]);
   const activeTweenRefs = useRef<Array<gsap.core.Tween | null>>([]);
@@ -47,7 +46,6 @@ const PillNav: React.FC<PillNavProps> = ({
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const navItemsRef = useRef<HTMLDivElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | HTMLElement | null>(null);
-  const navContainerRef = useRef<HTMLDivElement | null>(null);
   const hideTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -128,7 +126,6 @@ const PillNav: React.FC<PillNavProps> = ({
       hideTimeoutRef.current = null;
     }
 
-  setIsNavVisible(true);
   const navItems = navItemsRef.current;
     if (navItems) {
       gsap.set(navItems, { visibility: 'visible' });
@@ -143,7 +140,6 @@ const PillNav: React.FC<PillNavProps> = ({
 
   const handleNavLeave = () => {
     hideTimeoutRef.current = window.setTimeout(() => {
-      setIsNavVisible(false);
       const navItems = navItemsRef.current;
       if (navItems) {
         gsap.to(navItems, {

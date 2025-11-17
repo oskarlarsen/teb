@@ -1,5 +1,4 @@
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import ChromaGrid from './../components/reactbits/ChromaGrid';
 import DarkVeil from '../components/reactbits/DarkVeil';
 
