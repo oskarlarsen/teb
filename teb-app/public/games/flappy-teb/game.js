@@ -25,12 +25,22 @@ jarritosImg.onload = () => {
     jarritosLoaded = true;
 };
 
-const birdImg = new Image();
-birdImg.src = '/images/flappy/Slitengum.png';
-let birdImgLoaded = false;
-birdImg.onload = () => {
-    birdImgLoaded = true;
-};
+const birdImages = [
+    '/images/flappy/Slitengum.png',
+    '/images/flappy/Flyt-smid.png',
+    '/images/flappy/Full-anders.png'
+];
+let currentBirdImg = new Image();
+let currentBirdLoaded = false;
+
+function loadRandomBirdImage() {
+    const randomIndex = Math.floor(Math.random() * birdImages.length);
+    currentBirdImg = new Image();
+    currentBirdImg.src = birdImages[randomIndex];
+    currentBirdImg.onload = () => {
+        currentBirdLoaded = true;
+    };
+}
 
 const backgroundImg = new Image();
 backgroundImg.src = '/images/Garbae.jpg';
@@ -51,6 +61,8 @@ let gameState = 'start'; // 'start', 'playing', 'gameOver'
 let score = 0;
 let frames = 0;
 
+// Load initial random bird
+loadRandomBirdImage();
 // Bird
 const bird = {
     x: 80,
@@ -60,8 +72,8 @@ const bird = {
     velocity: 0,
     
     draw() {
-        if (birdImgLoaded) {
-            ctx.drawImage(birdImg, this.x, this.y, this.width, this.height);
+        if (currentBirdLoaded) {
+            ctx.drawImage(currentBirdImg, this.x, this.y, this.width, this.height);
         }
         else {
             ctx.fillStyle = '#FFD700';
@@ -270,6 +282,7 @@ function startGame() {
     startScreen.classList.add('hidden');
     gameOverScreen.classList.add('hidden');
     scoreElement.textContent = '0';
+    loadRandomBirdImage();
 }
 
 function endGame() {
