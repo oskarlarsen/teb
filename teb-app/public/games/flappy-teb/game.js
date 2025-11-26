@@ -13,8 +13,8 @@ canvas.height = 600;
 // Game settings
 const GRAVITY = 0.5;
 const JUMP_STRENGTH = -8;
-const PIPE_WIDTH = 60;
-const PIPE_GAP = 120;
+const PIPE_WIDTH = 55;
+const PIPE_GAP = 110;
 const PIPE_SPEED = 2;
 
 // Load image for Jarritos
@@ -23,6 +23,27 @@ jarritosImg.src = '/images/flappy/Jarritos-PNG-Pic-for-flappy.png';
 let jarritosLoaded = false;
 jarritosImg.onload = () => {
     jarritosLoaded = true;
+};
+
+const birdImg = new Image();
+birdImg.src = '/images/flappy/Slitengum.png';
+let birdImgLoaded = false;
+birdImg.onload = () => {
+    birdImgLoaded = true;
+};
+
+const backgroundImg = new Image();
+backgroundImg.src = '/images/Garbae.jpg';
+let backgroundImgLoaded = false;
+backgroundImg.onload = () => {
+    backgroundImgLoaded = true;
+};
+
+const groundImg = new Image();
+groundImg.src = '/images/flappy/Sidelengs-anders.jpg';
+let groundImgLoaded = false;
+groundImg.onload = () => {
+    groundImgLoaded = true;
 };
 
 // Game state
@@ -34,25 +55,30 @@ let frames = 0;
 const bird = {
     x: 80,
     y: canvas.height / 2,
-    width: 34,
-    height: 24,
+    width: 45,
+    height: 32,
     velocity: 0,
     
     draw() {
-        ctx.fillStyle = '#FFD700';
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        
-        // Eye
-        ctx.fillStyle = '#000';
-        ctx.fillRect(this.x + 20, this.y + 5, 5, 5);
-        
-        // Beak
-        ctx.fillStyle = '#FF6347';
-        ctx.beginPath();
-        ctx.moveTo(this.x + this.width, this.y + 10);
-        ctx.lineTo(this.x + this.width + 10, this.y + 12);
-        ctx.lineTo(this.x + this.width, this.y + 14);
-        ctx.fill();
+        if (birdImgLoaded) {
+            ctx.drawImage(birdImg, this.x, this.y, this.width, this.height);
+        }
+        else {
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+            
+            // Eye
+            ctx.fillStyle = '#000';
+            ctx.fillRect(this.x + 20, this.y + 5, 5, 5);
+            
+            // Beak
+            ctx.fillStyle = '#FF6347';
+            ctx.beginPath();
+            ctx.moveTo(this.x + this.width, this.y + 10);
+            ctx.lineTo(this.x + this.width + 10, this.y + 12);
+            ctx.lineTo(this.x + this.width, this.y + 14);
+            ctx.fill();
+        }
     },
     
     update() {
@@ -121,13 +147,13 @@ function drawPipes() {
             ctx.fillStyle = '#5CB85C';
             ctx.fillRect(pipe.x, 0, PIPE_WIDTH, pipe.topHeight);
             ctx.fillRect(pipe.x, pipe.bottomY, PIPE_WIDTH, canvas.height - pipe.bottomY - 50);
+            // Pipe borders
+            ctx.strokeStyle = '#2E7D32';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(pipe.x, 0, PIPE_WIDTH, pipe.topHeight);
+            ctx.strokeRect(pipe.x, pipe.bottomY, PIPE_WIDTH, canvas.height - pipe.bottomY - 50);
         }
         
-        // Pipe borders
-        //ctx.strokeStyle = '#2E7D32';
-        //ctx.lineWidth = 3;
-        //ctx.strokeRect(pipe.x, 0, PIPE_WIDTH, pipe.topHeight);
-        //ctx.strokeRect(pipe.x, pipe.bottomY, PIPE_WIDTH, canvas.height - pipe.bottomY - 50);
         
     });
 }
@@ -135,14 +161,57 @@ function drawPipes() {
 function updatePipes() {
     pipes.forEach((pipe, index) => {
         pipe.x -= PIPE_SPEED;
-        
-        // Check collision
-        if (
-            bird.x < pipe.x + PIPE_WIDTH &&
-            bird.x + bird.width > pipe.x &&
-            (bird.y < pipe.topHeight || bird.y + bird.height > pipe.bottomY)
-        ) {
-            endGame();
+
+        // Improve pipe collision border for better gameplay
+        const bottleNeckWidth = PIPE_WIDTH * 0.5;
+        const bottleBodyWidth = PIPE_WIDTH * 1;
+        const pipeCenter = pipe.x + PIPE_WIDTH / 2;
+
+        if (bird.x < pipe.x + PIPE_WIDTH && bird.x + bird.width > pipe.x) {
+            // Top pipe collision - check different heights for bottle shape
+            if (bird.y < pipe.topHeight) {
+                // Near the cap (narrow part)
+                const neckHeight = pipe.topHeight * 0.45;
+                if (pipe.topHeight - bird.y < neckHeight) {
+                    const leftEdge = pipeCenter - bottleNeckWidth / 2;
+                    const rightEdge = pipeCenter + bottleNeckWidth / 2;
+                    if (bird.x + bird.width > leftEdge && bird.x < rightEdge) {
+                        endGame();
+                    }
+                } 
+                // Bottle body (wider part)
+                else {
+                    const leftEdge = pipeCenter - bottleBodyWidth / 2;
+                    const rightEdge = pipeCenter + bottleBodyWidth / 2;
+                    if (bird.x + bird.width > leftEdge && bird.x < rightEdge) {
+                        endGame();
+                    }
+                }
+            }
+            
+            // Bottom pipe collision
+            if (bird.y + bird.height > pipe.bottomY) {
+                const distanceFromBottom = (bird.y + bird.height) - pipe.bottomY;
+                const bottomPipeHeight = canvas.height - pipe.bottomY - 50;
+                
+                // Near the base (narrow part)
+                const neckHeight = bottomPipeHeight * 0.45;
+                if (distanceFromBottom < neckHeight) {
+                    const leftEdge = pipeCenter - bottleNeckWidth / 2;
+                    const rightEdge = pipeCenter + bottleNeckWidth / 2;
+                    if (bird.x + bird.width > leftEdge && bird.x < rightEdge) {
+                        endGame();
+                    }
+                }
+                // Bottle body (wider part)
+                else {
+                    const leftEdge = pipeCenter - bottleBodyWidth / 2;
+                    const rightEdge = pipeCenter + bottleBodyWidth / 2;
+                    if (bird.x + bird.width > leftEdge && bird.x < rightEdge) {
+                        endGame();
+                    }
+                }
+            }
         }
         
         // Score
@@ -165,22 +234,31 @@ function updatePipes() {
 }
 
 function drawGround() {
-    ctx.fillStyle = '#DEB887';
-    ctx.fillRect(0, canvas.height - 50, canvas.width, 50);
-    
-    ctx.fillStyle = '#8B4513';
-    for (let i = 0; i < canvas.width; i += 20) {
-        ctx.fillRect(i, canvas.height - 50, 2, 50);
+    if (groundImgLoaded) {
+        ctx.drawImage(groundImg, 0, canvas.height - 50, canvas.width, 50);
+    } else {
+        ctx.fillStyle = '#DEB887';
+        ctx.fillRect(0, canvas.height - 50, canvas.width, 50);
+        
+        ctx.fillStyle = '#8B4513';
+        for (let i = 0; i < canvas.width; i += 20) {
+            ctx.fillRect(i, canvas.height - 50, 2, 50);
+        }
     }
 }
 
 function drawBackground() {
-    // Sky gradient
-    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    gradient.addColorStop(0, '#4ec0ca');
-    gradient.addColorStop(1, '#87ceeb');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (backgroundImgLoaded) {
+        ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
+    }
+    else {
+        // Sky gradient
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        gradient.addColorStop(0, '#4ec0ca');
+        gradient.addColorStop(1, '#87ceeb');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 }
 
 function startGame() {
@@ -226,7 +304,7 @@ function handleInput() {
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.code === 'Space') {
+    if (e.code === 'Space' || e.code === 'ArrowUp') {
         e.preventDefault();
         handleInput();
     }
