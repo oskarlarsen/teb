@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy TEBONSMA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="score">0</div>
+        <div id="gameOver" class="hidden">
+            <h2>Game Over!</h2>
+            <p>Score: <span id="finalScore">0</span></p>
+            <button id="restartBtn">Play Again</button>
+        </div>
+        <div id="startScreen">
+            <h2>Flappy TEBONSMA</h2>
+            <p>Trykk SPACE eller klikk for å starte</p>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
