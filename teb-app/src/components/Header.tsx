@@ -1,27 +1,29 @@
+import { useLocation } from 'react-router-dom';
+import PillNav from './reactbits/PillNav';
+
 const Header = () => {
+    const location = useLocation();
+
     return (
-        <header className="bg-teb-green text-white py-6 w-full">
-            <div className="">
-                <div className="flex justify-between items-center">
-                    <h1 className="text-2xl font-bold">TEBONSMA</h1>
-                    <nav>
-                        <ul className="flex gap-6 md:gap-8 lg:gap-10">
-                            <li>
-                                <a href="/" className="hover:opacity-80 transition-opacity text-lg">Hjem</a>
-                            </li>
-                            <li>
-                                <a href="/avis" className="hover:opacity-80 transition-opacity text-lg">Avis</a>
-                            </li>
-                            <li>
-                                <a href="/kontakt" className="hover:opacity-80 transition-opacity text-lg">Kontakt</a>
-                            </li>
-                            <li>
-                                <a href="/om oss" className="hover:opacity-80 transition-opacity text-lg">Om oss</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                {/* Add Logo here */}
+        <header className="fixed top-0 left-0 right-0 z-50 py-4 w-full">
+            <div className="max-w-7xl mx-auto px-2 flex justify-start">
+                <PillNav
+                    logo="/images/Jarritos-PNG-Pic.png"
+                    logoAlt="TEBONSMA"
+                    items={[
+                        { label: 'Hjem', href: '/' },
+                        { label: 'Avis', href: '/avis' },
+                        { label: 'Kontakt', href: '/contact' },
+                        { label: 'Om oss', href: '/persons' }
+                    ]}
+                    activeHref={location.pathname}
+                    className="bg-transparent"
+                    ease="power3.out"
+                    baseColor="teb-green"
+                    pillColor="#ff8c42"
+                    hoveredPillTextColor="#ffffff"
+                    pillTextColor="#1f2937"
+                />
             </div>
         </header>
     );

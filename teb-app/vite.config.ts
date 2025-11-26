@@ -12,4 +12,29 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          //split node_modules into vendor chunks
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react_vendor'
+            }
+            if (id.includes('gsap')) {
+              return 'gsap_vendor'
+            }
+            if (id.includes('framer-motion')) {
+              return 'framer_vendor'
+            }
+            if (id.includes('@tailwindcss')) {
+              return 'tailwind_vendor'
+            }
+            return 'vendor'
+          }
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000,
+  }
 })
