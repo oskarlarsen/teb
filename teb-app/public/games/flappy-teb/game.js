@@ -14,7 +14,7 @@ canvas.height = 600;
 const GRAVITY = 0.5;
 const JUMP_STRENGTH = -8;
 const PIPE_WIDTH = 55;
-const PIPE_GAP = 110;
+const PIPE_GAP = 150;
 const PIPE_SPEED = 2;
 
 // Load image for Jarritos
@@ -36,18 +36,46 @@ let currentBirdLoaded = false;
 function loadRandomBirdImage() {
     const randomIndex = Math.floor(Math.random() * birdImages.length);
     currentBirdImg = new Image();
+    currentBirdLoaded = false;
     currentBirdImg.src = birdImages[randomIndex];
     currentBirdImg.onload = () => {
         currentBirdLoaded = true;
     };
 }
 
-const backgroundImg = new Image();
-backgroundImg.src = '/images/Garbae.jpg';
+const backgroundImages = [
+    '/images/background/IMG_2715.JPG',
+    '/images/background/IMG_2716.JPG',
+    '/images/background/IMG_2717.JPG',
+    '/images/background/IMG_2718.JPG',
+    '/images/background/IMG_2719.JPG',
+    '/images/background/IMG_2720.JPG',
+    '/images/background/IMG_2721.JPG',
+    '/images/background/IMG_2722.JPG',
+    '/images/background/IMG_2723.JPG',
+    '/images/background/IMG_2724.JPG',
+    '/images/background/IMG_2725.JPG',
+    '/images/background/IMG_2726.JPG',
+    '/images/background/IMG_2727.JPG',
+    '/images/background/IMG_2728.JPG    ',
+    '/images/background/IMG_2729.JPG',
+    '/images/background/IMG_2730.JPG',
+    '/images/background/IMG_2731.JPG',
+    '/images/background/IMG_2732.JPG'
+];
+
+let currentBgImage = new Image();
 let backgroundImgLoaded = false;
-backgroundImg.onload = () => {
-    backgroundImgLoaded = true;
-};
+
+function loadRandomBackgroundImage() {
+    const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+    currentBgImage = new Image();
+    backgroundImgLoaded = false;
+    currentBgImage.src = backgroundImages[randomIndex];
+    currentBgImage.onload = () => {
+        backgroundImgLoaded = true;
+    };
+}
 
 const groundImg = new Image();
 groundImg.src = '/images/flappy/Sidelengs-anders.jpg';
@@ -56,6 +84,19 @@ groundImg.onload = () => {
     groundImgLoaded = true;
 };
 
+const crashSounds = [
+    new Audio('/audio/ferdigno.mp3'),
+    new Audio('/audio/herreguda.mp3'),
+    new Audio('/audio/sugersjela.mp3')
+];
+
+function playRandomCrashSound() {
+    const randomIndex = Math.floor(Math.random() * crashSounds.length);
+    crashSounds[randomIndex].play();
+}
+
+const sixSevenSound = new Audio('/audio/six-seven.mp3');
+
 // Game state
 let gameState = 'start'; // 'start', 'playing', 'gameOver'
 let score = 0;
@@ -63,6 +104,7 @@ let frames = 0;
 
 // Load initial random bird
 loadRandomBirdImage();
+loadRandomBackgroundImage();
 // Bird
 const bird = {
     x: 80,
@@ -231,6 +273,20 @@ function updatePipes() {
             pipe.scored = true;
             score++;
             scoreElement.textContent = score;
+
+            // Add six-seven sound efffect
+            if (score === 6) {
+                scoreElement.textContent = '6 - Six!';
+                scoreElement.style.fontSize = '64px';
+            } else if (score === 7) {
+                scoreElement.textContent = '7 - Seven!';
+                scoreElement.style.fontSize = '80px';
+                sixSevenSound.currentTime = 0;
+                sixSevenSound.play();
+                sixSevenSound.play().catch(e => console.log('Audio play error:', e));
+            } else {
+                scoreElement.style.fontSize = '48px';
+            }
         }
         
         // Remove off-screen pipes
@@ -261,7 +317,7 @@ function drawGround() {
 
 function drawBackground() {
     if (backgroundImgLoaded) {
-        ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(currentBgImage, 0, 0, canvas.width, canvas.height);
     }
     else {
         // Sky gradient
@@ -283,12 +339,16 @@ function startGame() {
     gameOverScreen.classList.add('hidden');
     scoreElement.textContent = '0';
     loadRandomBirdImage();
+    loadRandomBackgroundImage();
 }
 
 function endGame() {
     gameState = 'gameOver';
     finalScoreElement.textContent = score;
     gameOverScreen.classList.remove('hidden');
+
+    // Play random crash sound
+    playRandomCrashSound();
 }
 
 function gameLoop() {
