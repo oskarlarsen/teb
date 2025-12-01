@@ -5,10 +5,13 @@ const gameOverScreen = document.getElementById('gameOver');
 const startScreen = document.getElementById('startScreen');
 const finalScoreElement = document.getElementById('finalScore');
 const restartBtn = document.getElementById('restartBtn');
+const gif1Element = document.getElementById('gif1');
+const gif2Element = document.getElementById('gif2');
 
 // Canvas settings
 canvas.width = 400;
 canvas.height = 600;
+canvas.style.borderRadius = '10px';
 
 // Game settings
 const GRAVITY = 0.5;
@@ -50,18 +53,40 @@ const backgroundImages = [
     '/images/background/IMG_2718.JPG',
     '/images/background/IMG_2719.JPG',
     '/images/background/IMG_2720.JPG',
-    '/images/background/IMG_2721.JPG',
-    '/images/background/IMG_2722.JPG',
     '/images/background/IMG_2723.JPG',
     '/images/background/IMG_2724.JPG',
     '/images/background/IMG_2725.JPG',
     '/images/background/IMG_2726.JPG',
     '/images/background/IMG_2727.JPG',
-    '/images/background/IMG_2728.JPG    ',
+    '/images/background/IMG_2728.JPG',
     '/images/background/IMG_2729.JPG',
     '/images/background/IMG_2730.JPG',
     '/images/background/IMG_2731.JPG',
-    '/images/background/IMG_2732.JPG'
+    '/images/background/IMG_2732.JPG',
+    '/images/background/IMG_2742.png',
+    '/images/background/IMG_2743.JPG',
+    '/images/background/IMG_2744.JPG',
+    '/images/background/IMG_2745.JPG',
+    '/images/background/IMG_2746.JPG',
+    '/images/background/IMG_2747.JPG',
+    '/images/background/IMG_2748.JPG',
+    '/images/background/IMG_2749.JPG',
+    '/images/background/IMG_2750.JPG',
+    '/images/background/IMG_2751.JPG',
+    '/images/background/IMG_2753.JPG',
+    '/images/background/IMG_2754.JPG',
+    '/images/background/IMG_2755.JPG',
+    '/images/background/IMG_2756.JPG',
+    '/images/background/IMG_2757.JPG',
+    '/images/background/IMG_2758.JPG',
+    '/images/background/IMG_2759.JPG',
+    '/images/background/IMG_2761.JPG',
+    '/images/background/IMG_2762.png',
+    '/images/background/IMG_2763.JPG',
+    '/images/background/IMG_2764.JPG',
+    '/images/background/IMG_2765.JPG',
+    '/images/background/IMG_2767.JPG',
+    '/images/background/IMG_2768.JPG',
 ];
 
 let currentBgImage = new Image();
@@ -96,6 +121,78 @@ function playRandomCrashSound() {
 }
 
 const sixSevenSound = new Audio('/audio/six-seven.mp3');
+const twentyOneSound = new Audio('/audio/21.wav');
+
+
+// Brainrot GIFS
+const brainrotGifs = [
+    '/gifs/67.gif',
+    '/gifs/Adrian.gif',
+    '/gifs/CharlieTroll.gif',
+    '/gifs/FullMoon.gif',
+    '/gifs/GlowingEyesDemon.gif',
+    '/gifs/Goofball.gif',
+    '/gifs/Kendrick.gif',
+    '/gifs/Tuff.gif'
+];
+
+let currentBrainrotGif = new Image();
+let currentBrainrotGif2 = new Image();
+let GifLoaded = false;
+let GifLoaded2 = false;
+let showBrainrotGif = false;
+let brainrotGifTimer = 0;
+let gifPositions = [];
+
+function loadRandomBrainrotGif() {
+    // Select two different random GIFs
+    const randomIndex1 = Math.floor(Math.random() * brainrotGifs.length);
+    let randomIndex2 = Math.floor(Math.random() * brainrotGifs.length);
+    while (randomIndex2 === randomIndex1 && brainrotGifs.length > 1) {
+        randomIndex2 = Math.floor(Math.random() * brainrotGifs.length);
+    }
+
+    const gifSize = 100;
+    const minDistance = 120;
+    
+    // Generate first position
+    const pos1 = {
+        x: Math.random() * (canvas.width - gifSize),
+        y: Math.random() * (canvas.height - gifSize - 50)
+    };
+    
+    // Generate second position that doesn't overlap with first
+    let pos2;
+    let attempts = 0;
+    do {
+        pos2 = {
+            x: Math.random() * (canvas.width - gifSize),
+            y: Math.random() * (canvas.height - gifSize - 50)
+        };
+        
+        const dx = (pos2.x + gifSize/2) - (pos1.x + gifSize/2);
+        const dy = (pos2.y + gifSize/2) - (pos1.y + gifSize/2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        attempts++;
+        if (distance >= minDistance || attempts > 50) break;
+    } while (true);
+    
+    // Set GIF sources and positions using HTML elements
+    gif1Element.src = brainrotGifs[randomIndex1];
+    gif1Element.style.left = pos1.x + 'px';
+    gif1Element.style.top = pos1.y + 'px';
+    gif1Element.classList.remove('hidden');
+    
+    gif2Element.src = brainrotGifs[randomIndex2];
+    gif2Element.style.left = pos2.x + 'px';
+    gif2Element.style.top = pos2.y + 'px';
+    gif2Element.classList.remove('hidden');
+    
+    console.log('Showing GIFs:', brainrotGifs[randomIndex1], brainrotGifs[randomIndex2]);
+}
+
+
 
 // Game state
 let gameState = 'start'; // 'start', 'playing', 'gameOver'
@@ -276,14 +373,26 @@ function updatePipes() {
 
             // Add six-seven sound efffect
             if (score === 6) {
-                scoreElement.textContent = '6 - Six!';
+                scoreElement.textContent = '6!';
                 scoreElement.style.fontSize = '64px';
             } else if (score === 7) {
-                scoreElement.textContent = '7 - Seven!';
-                scoreElement.style.fontSize = '80px';
+                scoreElement.textContent = '7!';
+                scoreElement.style.fontSize = '100px';
                 sixSevenSound.currentTime = 0;
                 sixSevenSound.play();
                 sixSevenSound.play().catch(e => console.log('Audio play error:', e));
+
+                // Load and show brainrot gif for 3 seconds
+                loadRandomBrainrotGif();
+                showBrainrotGif = true;
+                brainrotGifTimer = 180; // 3 seconds at 60fps
+
+            } else if (score === 21) {
+                scoreElement.textContent = 'TWENNYONE!';
+                scoreElement.style.fontSize = '64px';
+                twentyOneSound.currentTime = 0;
+                twentyOneSound.play();
+                twentyOneSound.play().catch(e => console.log('Audio play error:', e));
             } else {
                 scoreElement.style.fontSize = '48px';
             }
@@ -338,6 +447,11 @@ function startGame() {
     startScreen.classList.add('hidden');
     gameOverScreen.classList.add('hidden');
     scoreElement.textContent = '0';
+    scoreElement.style.fontSize = '48px';
+    showBrainrotGif = false;
+    brainrotGifTimer = 0;
+    gif1Element.classList.add('hidden');
+    gif2Element.classList.add('hidden');
     loadRandomBirdImage();
     loadRandomBackgroundImage();
 }
@@ -359,6 +473,16 @@ function gameLoop() {
         frames++;
         bird.update();
         updatePipes();
+
+        // Handle brainrot gif display
+        if (showBrainrotGif && brainrotGifTimer > 0) {
+            brainrotGifTimer--;
+            if (brainrotGifTimer <= 0) {
+                showBrainrotGif = false;
+                gif1Element.classList.add('hidden');
+                gif2Element.classList.add('hidden');
+            }
+        }
     }
     
     drawPipes();

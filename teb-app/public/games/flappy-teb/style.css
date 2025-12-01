@@ -75,3 +75,12 @@ body {
 .hidden {
     display: none;
 }
+
+.celebration-gif {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 10px;
+}
