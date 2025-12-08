@@ -1,6 +1,6 @@
 # Security Audit Report - TEBONSMA Website
 
-**Audit Date:** December 8, 2025  
+**Audit Date:** December 8, 2024  
 **Auditor:** GitHub Copilot Security Agent  
 **Repository:** oskarlarsen/teb
 
@@ -93,12 +93,15 @@ The following non-security issues were found during linting:
 
 ```
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
+  X-XSS-Protection: 1; mode=block
 ```
+
+**Note:** See [security-headers-config.md](./teb-app/security-headers-config.md) for detailed configuration guides for various hosting platforms.
 
 **Status:** Not critical as the application has no user-generated content or authentication.
 
