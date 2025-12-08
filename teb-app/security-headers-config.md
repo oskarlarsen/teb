@@ -17,7 +17,8 @@ Create a file `public/_headers`:
 ```
 /*
   # Content Security Policy - Adjust based on your needs
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'
+  # Note: Start with relaxed policy and tighten after testing
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'
   
   # Prevent clickjacking
   X-Frame-Options: DENY
@@ -50,7 +51,7 @@ Create `vercel.json`:
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'"
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'"
         },
         {
           "key": "X-Frame-Options",
@@ -88,7 +89,7 @@ Create `public/_headers`:
 
 ```
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
@@ -104,7 +105,7 @@ Add to `.htaccess`:
 ```apache
 <IfModule mod_headers.c>
   # Content Security Policy
-  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'"
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'"
   
   # Other security headers
   Header set X-Frame-Options "DENY"
@@ -121,7 +122,7 @@ Add to `.htaccess`:
 Add to nginx configuration:
 
 ```nginx
-add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'" always;
+add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'" always;
 add_header X-Frame-Options "DENY" always;
 add_header X-Content-Type-Options "nosniff" always;
 add_header Referrer-Policy "strict-origin-when-cross-origin" always;
@@ -134,15 +135,21 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; prelo
 
 ### Content-Security-Policy (CSP)
 
-The CSP configuration above uses `'unsafe-inline'` and `'unsafe-eval'` for scripts because:
-- Vite uses inline scripts in development
-- Some animation libraries (GSAP, Motion) may use eval-like features
-- React Compiler may generate inline scripts
+The CSP configuration above uses `'unsafe-inline'` for styles because:
+- Tailwind CSS and styling libraries often inject inline styles
+- React components may use inline style objects
+- Animation libraries (GSAP, Motion) may add inline styles
 
-**For production**, consider:
-1. Using nonces or hashes for inline scripts
-2. Moving inline scripts to external files
-3. Testing thoroughly before tightening CSP
+**Important Notes:**
+- `'unsafe-eval'` is **NOT** included by default - modern React and Vite don't require it
+- `'unsafe-inline'` for scripts is **NOT** included - React 19 and Vite work without it
+- Only `'unsafe-inline'` for styles is included due to common CSS-in-JS patterns
+
+**For stricter security**, consider:
+1. Using CSS Modules or external stylesheets to avoid inline styles
+2. Using nonces or hashes for any remaining inline styles
+3. Testing thoroughly in production environment
+4. Using CSP report-only mode first to identify issues
 
 ### Testing Security Headers
 
