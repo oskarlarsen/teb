@@ -55,7 +55,7 @@ html, body {
   background-color: var(--color-navy);
   color: rgba(255, 255, 255, 0.87);
   min-height: 100vh;
-  overscroll-behavior-y: none;
+  overscroll-behavior: none;
   overflow-x: hidden;
 }
 
