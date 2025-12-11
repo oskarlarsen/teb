@@ -1,5 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @keyframes spin-slow {
   from {
@@ -48,10 +51,12 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   background-color: var(--color-navy);
   color: rgba(255, 255, 255, 0.87);
   min-height: 100vh;
+  overscroll-behavior-y: none;
+  overflow-x: hidden;
 }
 
 #root {

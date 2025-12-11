@@ -11,7 +11,6 @@ const gif2Element = document.getElementById('gif2');
 // Canvas settings
 canvas.width = 400;
 canvas.height = 600;
-canvas.style.borderRadius = '10px';
 
 // Game settings
 const GRAVITY = 0.5;
@@ -19,6 +18,27 @@ const JUMP_STRENGTH = -8;
 const PIPE_WIDTH = 55;
 const PIPE_GAP = 150;
 const PIPE_SPEED = 2;
+
+//Background music
+const bgMusicTracks = [
+    '/audio/bgmusic/Alan Walker - Faded.mp3',
+    '/audio/bgmusic/246 - Ed Sheeran - Shape of You.mp3',
+    '/audio/bgmusic/Enrique Iglesias - Tonight.mp3',
+    '/audio/bgmusic/Flo Rida - Whistle.mp3',
+    '/audio/bgmusic/Rihanna - Diamonds.mp3',
+    '/audio/bgmusic/Zara Larsson - Lush Life.mp3'
+];
+
+let bgMusic = new Audio();
+bgMusic.loop = true;
+bgMusic.volume = 0.4;
+let musicStarted = false;
+
+function loadRandomBgMusic() {
+    const randomIndex = Math.floor(Math.random() * bgMusicTracks.length);
+    bgMusic.src = bgMusicTracks[randomIndex];
+    bgMusic.load();
+}
 
 // Load image for Jarritos
 const jarritosImg = new Image();
@@ -110,9 +130,9 @@ groundImg.onload = () => {
 };
 
 const crashSounds = [
-    new Audio('/audio/ferdigno.mp3'),
-    new Audio('/audio/herreguda.mp3'),
-    new Audio('/audio/sugersjela.mp3')
+    new Audio('/audio/gamesounds/ferdigno.mp3'),
+    new Audio('/audio/gamesounds/herreguda.mp3'),
+    new Audio('/audio/gamesounds/sugersjela.mp3')
 ];
 
 function playRandomCrashSound() {
@@ -120,8 +140,8 @@ function playRandomCrashSound() {
     crashSounds[randomIndex].play();
 }
 
-const sixSevenSound = new Audio('/audio/six-seven.mp3');
-const twentyOneSound = new Audio('/audio/21.wav');
+const sixSevenSound = new Audio('/audio/gamesounds/six-seven.mp3');
+const twentyOneSound = new Audio('/audio/gamesounds/21.wav');
 
 
 // Brainrot GIFS
@@ -202,6 +222,7 @@ let frames = 0;
 // Load initial random bird
 loadRandomBirdImage();
 loadRandomBackgroundImage();
+loadRandomBgMusic();
 // Bird
 const bird = {
     x: 80,
@@ -454,6 +475,12 @@ function startGame() {
     gif2Element.classList.add('hidden');
     loadRandomBirdImage();
     loadRandomBackgroundImage();
+
+    // Start background music if not already started
+    if (!musicStarted) {
+        bgMusic.play().catch(e => console.log('Audio play error:', e));
+        musicStarted = true;
+    }
 }
 
 function endGame() {
