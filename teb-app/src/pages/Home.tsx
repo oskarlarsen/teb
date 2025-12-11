@@ -8,8 +8,8 @@ import DarkVeil from '../components/reactbits/DarkVeil'
 const Home = () => {
   return (
     <div className="flex flex-col min-h-screen relative">
-      {/* Custom Background */}
-      <div className="fixed inset-0 z-0">
+      {/* Custom Background - Fixed and covers full viewport */}
+      <div className="fixed inset-0 w-full h-full z-0 bg-navy">
         <DarkVeil />
       </div>
 

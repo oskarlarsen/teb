@@ -12,7 +12,7 @@ const Header = () => {
                     logoAlt="TEBONSMA"
                     items={[
                         { label: 'Hjem', href: '/' },
-                        { label: 'Avis', href: '/avis' },
+                        { label: 'Flappy', href: '/flappy' },
                         { label: 'Kontakt', href: '/contact' },
                         { label: 'Om oss', href: '/persons' }
                     ]}

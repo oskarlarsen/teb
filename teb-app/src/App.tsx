@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
 import Persons from './pages/Persons'
 import Contact from './pages/Contact'
+import FlappyGame from './pages/FlappyGame'
 import './App.css'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/persons" element={<Persons />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/flappy" element={<FlappyGame />} />
       </Routes>
     </Router>
   )
