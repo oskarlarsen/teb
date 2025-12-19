@@ -6,7 +6,7 @@ const Header = () => {
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 py-4 w-full">
-            <div className="max-w-7xl mx-auto px-2 flex justify-start">
+            <div className="w-full pl-4 flex justify-start">
                 <PillNav
                     logo="/images/Jarritos-PNG-Pic.png"
                     logoAlt="TEBONSMA"
@@ -14,7 +14,7 @@ const Header = () => {
                         { label: 'Hjem', href: '/' },
                         { label: 'Flappy', href: '/flappy' },
                         { label: 'Kontakt', href: '/contact' },
-                        { label: 'Om oss', href: '/persons' }
+                        { label: 'Om oss', href: '/about' }
                     ]}
                     activeHref={location.pathname}
                     className="bg-transparent"
