@@ -11,8 +11,8 @@ import FAQ from '../components/FAQ'
 
 const Home = () => {
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}, []);
   const events: Event[] = [
     {
       id: 1,

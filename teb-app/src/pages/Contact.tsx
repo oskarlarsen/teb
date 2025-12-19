@@ -7,8 +7,8 @@ import Calendar from '../components/Calendar'
 
 const Contact = () => {
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}, []);
   return (
     <div className="flex flex-col min-h-screen relative">
       {/* Custom Background */}
