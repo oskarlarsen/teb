@@ -108,7 +108,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       borderColor: '#8B5CF6',
       gradient: 'linear-gradient(225deg,#8B5CF6,#000)',
       url: 'https://www.instagram.com/petterlona/',
-      bio: 'Petter her vår egne Journalist. Grunnlegger av Tebonsma Times. Har alltid en avisartikkel på lur',
+      bio: 'Petter er vår egne Journalist. Grunnlegger av The Tebonsma Times. Har alltid en avisartikkel på lur.',
       age: 22,
       skills: ['Modig', 'Krøller', 'Anarkist'],
       achievements: ['Årets journalist 2024']
@@ -121,7 +121,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       borderColor: '#06B6D4',
       gradient: 'linear-gradient(135deg,#06B6D4,#000)',
       url: 'https://www.instagram.com/eivind.f.sundet/',
-      bio: 'Eivind er gjengens "moroklump". Har alltid en vits på lur, men vi forstår dem aldri.',
+      bio: 'Eivind er gjengens "moroklump". Har alltid en vits på lur, men vi forstår de egentlig aldri.',
       age: 22,
       skills: ['Dårlige vitser', 'Standup', 'Latino vibes'],
       achievements: ['Beste vits 2024']
@@ -149,7 +149,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       url: 'https://www.instagram.com/august.dyrendal/',
       bio: 'August er vår militant. Han er for tiden opp i nord og tjener fedrelandet.',
       age: 22,
-      skills: ['', 'Mot', 'Disiplin', 'Lojalitet'],
+      skills: ['Mot', 'Disiplin', 'Lojalitet'],
       achievements: ['Beste soldat 2024']
     },
     {
