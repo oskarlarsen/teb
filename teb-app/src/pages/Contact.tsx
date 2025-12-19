@@ -1,6 +1,6 @@
 import Header from '../components/Header'
 import DarkVeil from '../components/reactbits/DarkVeil'
-import VariableFontHoverByRandomLetter from '../components/fancy/text/variable-font-hover-by-random-letter'
+//import VariableFontHoverByRandomLetter from '../components/fancy/text/variable-font-hover-by-random-letter'
 import SpotlightCard from '../components/reactbits/SpotlightCard'
 import Calendar from '../components/Calendar'
 

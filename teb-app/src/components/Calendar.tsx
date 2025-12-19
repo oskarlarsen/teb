@@ -9,7 +9,7 @@ const Calendar = () => {
 
   // Generate calendar days for current month
   const generateCalendarDays = () => {
-    const today = new Date()
+    //const today = new Date()
     const year = currentYear
     const month = currentMonth
     const firstDay = new Date(year, month, 1)
