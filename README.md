@@ -73,7 +73,7 @@ teb-app/
 │   │       ├── game.js         # Canvas-based game logic
 │   │       ├── index.html      # Game HTML
 │   │       └── style.css       # Game styling
-│   ├── gifs/                   # Celebration GIFs
+│   ├── gifs/
 │   └── images/
 │       ├── background/         # Game backgrounds (30+)
 │       └── flappy/             # Bird sprites & assets
@@ -97,7 +97,7 @@ teb-app/
 │   │
 │   ├── pages/
 │   │   ├── Home.tsx            # Landing page
-│   │   ├── FlappyGame.tsx      # Game page with DarkVeil
+│   │   ├── FlappyGame.tsx      # Game page
 │   │   ├── Contact.tsx         # Contact information
 │   │   └── Persons.tsx         # Team members showcase
 │   │
@@ -112,8 +112,8 @@ teb-app/
 │   ├── globals.css             # Global styles & overrides
 │   └── main.tsx                # React entry point
 │
-├── components.json              # shadcn/ui configuration
-├── tailwind.config.js           # Tailwind CSS configuration
+├── components.json             # shadcn/ui configuration
+├── tailwind.config.js          # Tailwind CSS configuration
 ├── tsconfig.json               # TypeScript configuration
 └── vite.config.ts              # Vite build configuration
 ```
