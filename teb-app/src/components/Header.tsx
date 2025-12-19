@@ -14,7 +14,7 @@ const Header = () => {
                         { label: 'Hjem', href: '/' },
                         { label: 'Flappy', href: '/flappy' },
                         { label: 'Kontakt', href: '/contact' },
-                        { label: 'Om oss', href: '/persons' }
+                        { label: 'Om oss', href: '/about' }
                     ]}
                     activeHref={location.pathname}
                     className="bg-transparent"

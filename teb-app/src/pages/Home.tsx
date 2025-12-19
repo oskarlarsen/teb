@@ -1,6 +1,6 @@
 import Header from '../components/Header'
-import Letter3DSwap from '../components/fancy/text/letter-3d-swap'
-import TextRotate from '../components/fancy/text/text-rotate'
+//import Letter3DSwap from '../components/fancy/text/letter-3d-swap'
+//import TextRotate from '../components/fancy/text/text-rotate'
 import VariableFontHoverByRandomLetter from '../components/fancy/text/variable-font-hover-by-random-letter'
 import MediaBetweenText from '../components/fancy/blocks/media-between-text'
 import DarkVeil from '../components/reactbits/DarkVeil'
@@ -47,7 +47,7 @@ const Home = () => {
     },
     {
       id: 3,
-      question: 'Hvor morsom er Anders?',
+      question: 'Hvor morsom er egentlig Anders "Johann" Mo Garberg?',
       answer: 'Anders er ganske tullete av seg og bidrar ofte til god stemning på våre arrangementer. Han er kjent for morsomme utsagn en gang i blant.'
     },
     {
@@ -57,8 +57,8 @@ const Home = () => {
     },
     {
       id: 5,
-      question: 'Hvem er den som er minst morsom i TEBONSMA?',
-      answer: 'Det er et hardt konkurranseforhold, men mange vil nok si at Fredrik tar den tittelen. Han prøver virkelig sitt beste.'
+      question: 'Hvem er det som er minst morsom i TEBONSMA?',
+      answer: 'Det er hard konkurranse her, men mange vil nok si at Fredrik Schmid Bjørge tar den tittelen. Han prøver virkelig sitt beste.'
     },
     {
       id: 6,
