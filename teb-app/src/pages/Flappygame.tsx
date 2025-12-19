@@ -6,11 +6,7 @@ export default function FlappyGame() {
     <div className="flex flex-col min-h-screen relative">
       {/* Fixed DarkVeil background - same as Home */}
       <div className="fixed inset-0 z-0">
-        <DarkVeil 
-          hueShift={10} 
-          warpAmount={0.2}
-          speed={0.8}
-        />
+        <DarkVeil />
       </div>
       
       {/* Header - on top */}
