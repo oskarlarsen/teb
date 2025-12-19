@@ -4,6 +4,7 @@ import TextRotate from '../components/fancy/text/text-rotate'
 import VariableFontHoverByRandomLetter from '../components/fancy/text/variable-font-hover-by-random-letter'
 import MediaBetweenText from '../components/fancy/blocks/media-between-text'
 import DarkVeil from '../components/reactbits/DarkVeil'
+import WallOfLove from '../components/WallOfLove'
 
 const Home = () => {
   return (
@@ -14,8 +15,9 @@ const Home = () => {
       </div>
 
       <Header />
-      <main className="flex-1 flex items-center justify-center p-8 relative z-10">
-        <div className="text-center max-w-4xl mx-auto space-y-12">
+      <main className="flex-1 flex flex-col items-center justify-center p-8 relative z-10">
+        {/* Hero Section */}
+        <div className="text-center max-w-4xl mx-auto space-y-12 mb-32">
           <VariableFontHoverByRandomLetter
             label="TEBONSMA"
             className="text-6xl md:text-8xl font-bold text-teb-orange tracking-tight"
@@ -72,6 +74,9 @@ const Home = () => {
           />
           </div>
         </div>
+
+        {/* Wall of Love Section */}
+        <WallOfLove />
       </main>
     </div>
   )
