@@ -414,6 +414,17 @@ function updatePipes() {
                 twentyOneSound.currentTime = 0;
                 twentyOneSound.play();
                 twentyOneSound.play().catch(e => console.log('Audio play error:', e));
+            } else if (score === 67) {
+                scoreElement.textContent = 'SIX-SEVEN!';
+                scoreElement.style.fontSize = '150px';
+                sixSevenSound.currentTime = 0;
+                sixSevenSound.play();
+                sixSevenSound.play().catch(e => console.log('Audio play error:', e));
+
+                // Load and show brainrot gif for 3 seconds
+                loadRandomBrainrotGif();
+                showBrainrotGif = true;
+                brainrotGifTimer = 180; // 3 seconds at 60fps
             } else {
                 scoreElement.style.fontSize = '48px';
             }
