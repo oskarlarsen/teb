@@ -5,8 +5,34 @@ import VariableFontHoverByRandomLetter from '../components/fancy/text/variable-f
 import MediaBetweenText from '../components/fancy/blocks/media-between-text'
 import DarkVeil from '../components/reactbits/DarkVeil'
 import WallOfLove from '../components/WallOfLove'
+import EventsSlideshow, { type Event } from '../components/EventsSlideshow'
 
 const Home = () => {
+  const events: Event[] = [
+    {
+      id: 1,
+      title: 'Pulebord 2025',
+      startDateTime: '2025-12-20T12:30:00',
+      endDateTime: '2025-12-21T03:00:00',
+      description: 'Årets Pulebord er det 4de av sitt slag, og vi gleder oss til en kveld fylt med god mat, drikke og sosialt samvær. Dette blir en forglemmelig aften.',
+      image: 'images/events/Pulebord.JPG'
+    },
+    {
+      id: 2,
+      title: 'Guttas Nyttårsaften',
+      startDateTime: '2025-12-31T18:00:00',
+      endDateTime: '2026-01-01T03:00:00',
+      description: 'Vi feirer så klart nyttårsaften sammen og ser fram til en kveld fylt med moro, latter og gode minner. Det blir god mat, drikke og selvfølgelig fyrverkeri ved midnatt.',
+      image: 'images/events/Nyttaar.jpg'
+    },
+    {
+      id: 3,
+      title: 'Sommerfest',
+      description: 'Årets sommerfest er jo såklart høydepunktet på året vårt. Vi samles for en dag fylt med sol, moro og gode vibber. Det blir grilling, musikk og masse aktiviteter.',
+      image: 'images/events/Sommerfest.png'
+    }
+  ]
+
   return (
     <div className="flex flex-col min-h-screen relative">
       {/* Custom Background - Fixed and covers full viewport */}
@@ -74,6 +100,9 @@ const Home = () => {
           />
           </div>
         </div>
+
+        {/* Events Slideshow */}
+        <EventsSlideshow events={events} autoPlayInterval={12000} />
 
         {/* Wall of Love Section */}
         <WallOfLove />
