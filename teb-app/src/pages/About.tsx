@@ -1,8 +1,12 @@
+import { useEffect } from 'react';
 import Header from '../components/Header';
 import ChromaGrid from '../components/reactbits/ChromaGrid';
 import DarkVeil from '../components/reactbits/DarkVeil';
 
 const About =() => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="flex flex-col min-h-screen relative">
       <Header />

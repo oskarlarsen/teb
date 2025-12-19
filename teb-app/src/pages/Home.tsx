@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Header from '../components/Header'
 //import Letter3DSwap from '../components/fancy/text/letter-3d-swap'
 //import TextRotate from '../components/fancy/text/text-rotate'
@@ -9,6 +10,9 @@ import EventsSlideshow, { type Event } from '../components/EventsSlideshow'
 import FAQ from '../components/FAQ'
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const events: Event[] = [
     {
       id: 1,
