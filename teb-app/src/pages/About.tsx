@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Header from '../components/Header';
 import ChromaGrid from '../components/reactbits/ChromaGrid';
 import DarkVeil from '../components/reactbits/DarkVeil';
+import VariableFontHoverByRandomLetter from '../components/fancy/text/variable-font-hover-by-random-letter';
 
 const About =() => {
   useEffect(() => {
@@ -17,9 +18,20 @@ const About =() => {
         {/* About Section */}
         <div className="max-w-6xl w-full mb-16 mt-8">
           <div className="text-center space-y-6">
-            <h2 className="text-teb-orange text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider">
-              Hvem vi er
-            </h2>
+            <div className="text-center max-w-4xl mx-auto space-y-12 mb-4">
+          <VariableFontHoverByRandomLetter
+            label="HVEM ER VI?"
+            className="text-6xl md:text-8xl font-bold text-teb-orange tracking-tight"
+            fromFontVariationSettings="'wght' 500"
+            toFontVariationSettings="'wght' 900"
+            staggerDuration={0.04}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 25,
+            }}
+          />
+        </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mx-auto max-w-5xl">
               Vi bringer ærlighet og transparens til vennskap og sosiale arrangementer
             </h1>
@@ -39,9 +51,6 @@ const About =() => {
               </p>
               <p className="leading-relaxed">
                 Organisasjonen holder medlemskapet eksklusivt for å sikre en tett og god atmosfære, men vi åpner dørene under Sommerfesten hvor venner og kjente er hjertelig velkommen til å bli med på feiringen. Dette er vår måte å dele gleden og kulturen vi har bygget opp med andre.
-              </p>
-              <p className="leading-relaxed">
-                Enten det er ved det årlige Pulebordet med eksklusiv mat og drikke, nyttårsfeiringen med fyrverkeri ved midnatt, eller den livlige Sommerfesten med grilling og musikk - hvert arrangement reflekterer vårt engasjement for kvalitet og fellesskap. Vi ser frem til mange flere år uforglemmelige øyeblikk sammen.
               </p>
             </div>
           </div>
