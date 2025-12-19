@@ -176,10 +176,10 @@ const EventsSlideshow = ({ events, autoPlayInterval = 5000 }: EventsSlideshowPro
   }
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-16">
+    <div className="w-full max-w-5xl mx-auto px-4 py-8">
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Events</h2>
-        <p className="text-lg text-gray-400">Få med deg våre morsomme arrangementer</p>
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">Eventer og Hendelser</h2>
+        <p className="text-lg text-gray-400">Få med deg våre morsomheter!</p>
       </div>
 
       <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden">

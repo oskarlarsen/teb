@@ -1,6 +1,6 @@
 import Header from '../components/Header'
 import DarkVeil from '../components/reactbits/DarkVeil'
-//import VariableFontHoverByRandomLetter from '../components/fancy/text/variable-font-hover-by-random-letter'
+import VariableFontHoverByRandomLetter from '../components/fancy/text/variable-font-hover-by-random-letter'
 import SpotlightCard from '../components/reactbits/SpotlightCard'
 import Calendar from '../components/Calendar'
 
@@ -50,8 +50,24 @@ const Contact = () => {
           </a>
         </div> */}
 
+        {/* Hero Section */}
+        <div className="text-center max-w-4xl mx-auto space-y-12 mb-4">
+          <VariableFontHoverByRandomLetter
+            label="TEBONSMA"
+            className="text-6xl md:text-8xl font-bold text-teb-orange tracking-tight"
+            fromFontVariationSettings="'wght' 500"
+            toFontVariationSettings="'wght' 900"
+            staggerDuration={0.04}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 25,
+            }}
+          />
+        </div>
+
         {/* Doctor Appointment Booking Section */}
-        <div className="w-full max-w-4xl">
+        <div className="w-full max-w-4xl mt-8">
           <h2 className="text-3xl md:text-5xl font-bold text-center text-white mb-12">
             Book din legetime
           </h2>

@@ -263,7 +263,7 @@ return (
         key={i}
         onMouseMove={handleCardMove}
         onClick={() => handleCardClick(c)}
-        className="group relative flex flex-col h-[400px] w-[300px] p-1 rounded-[20px] border-transparent transition-colors duration-300 cursor-pointer will-change-transform"
+        className="group relative flex flex-col h-[550px] w-[420px] p-1 rounded-[20px] border-transparent transition-colors duration-300 cursor-pointer will-change-transform"
         style={
           {
             '--card-border': c.borderColor || 'transparent',
@@ -278,8 +278,8 @@ return (
           style={{
             backdropFilter: 'grayscale(1) brightness(0.78)',
             WebkitBackdropFilter: 'grayscale(1) brightness(0.78)',
-            maskImage: `radial-gradient(circle 300px at var(--mouse-x, 50%) var(--mouse-y, 50%), transparent 0%, transparent 15%, rgba(0,0,0,0.10) 30%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.50) 75%, rgba(0,0,0,0.68) 88%, white 100%)`,
-            WebkitMaskImage: `radial-gradient(circle 300px at var(--mouse-x, 50%) var(--mouse-y, 50%), transparent 0%, transparent 15%, rgba(0,0,0,0.10) 30%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.50) 75%, rgba(0,0,0,0.68) 88%, white 100%)`
+            maskImage: `radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), transparent 0%, transparent 15%, rgba(0,0,0,0.10) 30%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.50) 75%, rgba(0,0,0,0.68) 88%, white 100%)`,
+            WebkitMaskImage: `radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), transparent 0%, transparent 15%, rgba(0,0,0,0.10) 30%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.50) 75%, rgba(0,0,0,0.68) 88%, white 100%)`
           }}
         />
         
@@ -291,13 +291,13 @@ return (
           }}
         />
 
-        <div className="relative z-10 p-3 box-border" style={{ height: '300px' }}>
+        <div className="relative z-10 p-3 box-border" style={{ height: '420px' }}>
           <img src={c.image} alt={c.title} loading="lazy" className="w-full h-full object-cover rounded-[6px]" />
         </div>
-        <footer className="relative z-10 p-1.5 text-white font-sans flex flex-col gap-0.5">
-            <h3 className="text-[1.05rem] font-semibold truncate">{c.title}</h3>
-            <p className="text-[0.85rem] opacity-85 truncate">{c.subtitle}</p>
-            {c.handle && <span className="text-[0.70rem] opacity-80 truncate">{c.handle}</span>}
+        <footer className="relative z-10 p-2 text-white font-sans flex flex-col gap-1">
+            <h3 className="text-[1.35rem] font-semibold truncate">{c.title}</h3>
+            <p className="text-[1.10rem] opacity-85 truncate">{c.subtitle}</p>
+            {c.handle && <span className="text-[0.95rem] opacity-80 truncate">{c.handle}</span>}
           </footer>
         </article>
       ))}
