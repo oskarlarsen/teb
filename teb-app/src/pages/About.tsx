@@ -47,7 +47,7 @@ const About =() => {
                 TEBONSMA er mer enn bare en organisasjon - det er et fellesskap hvor hvert medlem bidrar med sin unike personlighet og sine talenter. Vi tar vare på hverandre, feirer livets store og små øyeblikk sammen, og skaper minner som varer livet ut.
               </p>
               <p className="leading-relaxed">
-                Med ni dedikerte medlemmer har vi skapt et miljø hvor vennskap, humor og gode opplevelser står i sentrum. Våre arrangementer er nøye planlagt og gjennomført med stor oppmerksomhet på detaljer, fra den kulinariske opplevelsen til de sosiale aktivitetene. Vi er stolte ambassadører for Jarritos og setter alltid pris på gode drikkevarer og mat i godt selskap.
+                Med ni dedikerte medlemmer har vi skapt et miljø hvor vennskap, humor og gode opplevelser står i sentrum. Våre arrangementer er nøye planlagt og gjennomført med stor oppmerksomhet på detaljer, fra den kulinariske opplevelsen til de sosiale aktivitetene. Vi ser på oss selv som stolte ambassadører for Jarritos og setter alltid pris på gode drikkevarer og mat i godt selskap.
               </p>
               <p className="leading-relaxed">
                 Organisasjonen holder medlemskapet eksklusivt for å sikre en tett og god atmosfære, men vi åpner dørene under Sommerfesten hvor venner og kjente er hjertelig velkommen til å bli med på feiringen. Dette er vår måte å dele gleden og kulturen vi har bygget opp med andre.

@@ -146,13 +146,13 @@ const Contact = () => {
                   <p className="text-gray-400 text-sm">Ring oss nå for profesjonell cybersikkerhetshjelp</p>
                 </div>
                 <a 
-                  href="tel:+4798848029"
+                  href="tel:+6767676967"
                   className="w-full bg-gradient-to-r from-teb-green to-green-600 hover:from-green-600 hover:to-teb-green text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teb-green/50 flex items-center justify-center gap-2 group"
                 >
                   <svg className="w-6 h-6 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  Ring +47 988 48 029
+                  Ring +67 67 67 69 67
                 </a>
               </div>
             </div>
@@ -187,7 +187,7 @@ const Contact = () => {
                     />
                     <div className="flex-1">
                       <h4 className="text-xl font-bold text-white">DJ Gjøran</h4>
-                      <p className="text-sm text-gray-400">Techno & DnB</p>
+                      <p className="text-sm text-gray-400">Techno & Algdat</p>
                       <div className="flex gap-2 mt-2">
                         <span className="text-xs bg-teb-orange/20 text-teb-orange px-2 py-1 rounded">Erfaren</span>
                       </div>
