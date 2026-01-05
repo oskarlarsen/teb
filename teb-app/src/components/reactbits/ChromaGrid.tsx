@@ -54,7 +54,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       borderColor: '#4F46E5',
       gradient: 'linear-gradient(145deg,#4F46E5,#000)',
       url: 'https://www.instagram.com/eirik.engum/',
-      bio: 'TEBONSMAs egen Josef Mengele. Det er hos Eirik, på toppen av sjetnemarka, de beste festene i Trondheim arrangeres.',
+      bio: 'TEBONSMAs egen Doktor Proktor. Det er hos Eirik, på toppen av sjetnemarka, de beste festene i Trondheim arrangeres.',
       age: 22,
       email: 'eirik@tebonsma.no',
       skills: ['Diagnosering', 'Kickflip', 'Tarmutleggelse'],
