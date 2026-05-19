@@ -11,7 +11,7 @@ const About =() => {
   return (
     <div className="flex flex-col min-h-screen relative">
       <Header />
-      <div className="fixed inset-0 z-0">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <DarkVeil />
       </div>
       <main className='flex-1 flex flex-col items-center justify-center p-8 relative z-10'>
