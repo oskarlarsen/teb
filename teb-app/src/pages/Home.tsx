@@ -74,7 +74,7 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen relative">
       {/* Custom Background - Fixed and covers full viewport */}
-      <div className="fixed inset-0 w-full h-full z-0 bg-navy">
+      <div className="fixed inset-0 w-full h-full z-0 bg-navy pointer-events-none">
         <DarkVeil />
       </div>
 
